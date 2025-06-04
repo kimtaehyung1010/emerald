@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restaurant Menu</title>
+  <style>
+    :root {
+      --olive-green: #556b2f;
+      --burgundy: #800020;
+      --light-bg: #fefefe;
+      --text-dark: #333;
+      --text-light: #fff8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background-color: var(--burgundy);
+      color: white;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      height: 30px;
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: var(--olive-green);
+      color: white;
+      padding: 1rem;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 5rem 0;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .menu-section {
+      flex: 1;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: auto;
+      gap: 1.5rem;
+      overflow-y: auto;
+    }
+    .dish-box {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .dish-box img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .dish-content {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+    }
+
+    .dish-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--burgundy);
+    }
+
+    .dish-price {
+      font-size: 1rem;
+      color: var(--olive-green);
+      margin: 0.5rem 0;
+    }
+
+    .add-button {
+      padding: 0.5rem;
+      background-color: var(--olive-green);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .add-button:hover {
+      background-color: #6b8e23;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="emerald.jpg" alt="Logo">
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Deals</a>
+    </nav>
+  </header>
+
+  <div class="content">
+    <aside class="sidebar">
+      <h3>Categories</h3>
+      <a href="south-indian.html">South Indian</a>
+      <a href="northindian.html">North Indian</a>
+      <a href="maincourse.html">Main Course</a>
+      <a href="curry.html">Curry</a>
+      <a href="drinks.html">Drinks</a>
+      <a href="desserts.html">Desserts</a>
+    </aside>
+
+    <!-- Existing HTML content above remains unchanged -->
+
+<section class="menu-section" id="menu">
+    <div class="dish-box">
+      <img src="idli.jpeg" alt="idli">
+      <div class="dish-content">
+        <div class="dish-title">Idli</div>
+        <div class="dish-price">₹99</div>
+        <button class="add-button" onclick="addToCart('Idli', 99)">Add</button>
+
+      </div>
+    </div>
+  
+    <div class="dish-box">
+      <img src="masala dosa.jpeg" alt="masala dosa">
+      <div class="dish-content">
+        <div class="dish-title">Masala Dosa</div>
+        <div class="dish-price">₹99</div>
+        <button class="add-button" onclick="addToCart('Masala Dosa', 99)">Add</button>
+
+      </div>
+    </div>
+  
+    <div class="dish-box">
+      <img src="puri.jpeg" alt="puri">
+      <div class="dish-content">
+        <div class="dish-title">Puri</div>
+        <div class="dish-price">₹95</div>
+        <button class="add-button" onclick="addToCart('Puri', 95)">Add</button>
+
+      </div>
+    </div>
+  
+    <div class="dish-box">
+      <img src="Idiyappam.jpeg" alt="idiyappam">
+      <div class="dish-content">
+        <div class="dish-title">Idiyappam</div>
+        <div class="dish-price">₹95</div>
+        <button class="add-button" onclick="addToCart('Idiyappam', 95)">Add</button>
+
+      </div>
+    </div>
+  
+    <div class="dish-box">
+      <img src="puttu.jpeg" alt="puttu">
+      <div class="dish-content">
+        <div class="dish-title">Puttu</div>
+        <div class="dish-price">₹99</div>
+        <button class="add-button" onclick="addToCart('Puttu', 99)">Add</button>
+
+      </div>
+    </div>
+  
+    <div class="dish-box">
+      <img src="vada.jpeg" alt="vada">
+      <div class="dish-content">
+        <div class="dish-title">Vada</div>
+        <div class="dish-price">₹55</div>
+        <button class="add-button" onclick="addToCart('Vada', 55)">Add</button>
+
+      </div>
+    </div>
+  </section>
+  
+  <!-- Remaining HTML content below remains unchanged -->
+  
+
+      <!-- Add more dishes as needed -->
+    </section>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.add-button');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        alert('Item added to cart!');
+      });
+    });
+    
+  function addToCart(dishName, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name: dishName, price: price });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'bill.html';
+  }
+
+
+  </script>
+</body>
+</html>

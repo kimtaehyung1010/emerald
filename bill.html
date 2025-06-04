@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Bill</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 7rem;
+      background-image: url("banner2.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    h1 {
+      color: #800020;
+      text-align: center;
+    }
+    .bill-container {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 2rem;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .total {
+      font-weight: bold;
+      margin-top: 1rem;
+      border-top: 1px solid #ccc;
+      padding-top: 1rem;
+    }
+    .remove-btn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .remove-btn:hover {
+      background: darkred;
+    }
+    button.back {
+      display: block;
+      margin: 2rem auto 0;
+      background-color: #556b2f;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button.back:hover {
+      background-color: #6b8e23;
+    }
+  </style>
+</head>
+<body>
+  <div class="bill-container">
+    <h1>Your Bill</h1>
+    <div id="bill-items"></div>
+    <div class="total" id="total"></div>
+    <button class="back" onclick="window.location.href='menuindex.html'">Go back to menu</button>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function renderBill() {
+      const billContainer = document.getElementById('bill-items');
+      billContainer.innerHTML = '';
+      let subtotal = 0;
+
+      cart.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `
+          <span>${item.name} - ₹${item.price}</span>
+          <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+        `;
+        billContainer.appendChild(div);
+        subtotal += item.price;
+      });
+
+      const tax = subtotal * 0.05;
+      const total = subtotal + tax;
+
+      document.getElementById('total').innerHTML = `
+        Subtotal: ₹${subtotal.toFixed(2)}<br>
+        Tax (5%): ₹${tax.toFixed(2)}<br>
+        <strong>Total: ₹${total.toFixed(2)}</strong>
+      `;
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      renderBill();
+    }
+
+    renderBill();
+  </script>
+</body>
+</html>
+
+      
