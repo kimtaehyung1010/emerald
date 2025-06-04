@@ -77,6 +77,7 @@
       background-color: var(--olive-green);
       color: white;
       padding: 1rem;
+      overflow-y: auto;
     }
 
     .sidebar h3 {
@@ -88,7 +89,7 @@
       display: block;
       color: white;
       text-decoration: none;
-      margin: 5rem 0;
+      margin: 0.5rem 0;
     }
 
     .sidebar a:hover {
@@ -104,6 +105,7 @@
       gap: 1.5rem;
       overflow-y: auto;
     }
+
     .dish-box {
       background-color: white;
       border: 1px solid #ddd;
@@ -152,6 +154,30 @@
     .add-button:hover {
       background-color: #6b8e23;
     }
+
+    /* ===== RESPONSIVE STYLES ===== */
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        order: 2; /* sidebar below menu */
+        max-height: 150px;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      .sidebar a {
+        display: inline-block;
+        margin: 0 1rem 0 0;
+      }
+      .menu-section {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        order: 1; /* menu first */
+      }
+    }
   </style>
 </head>
 <body>
@@ -177,94 +203,66 @@
       <a href="desserts.html">Desserts</a>
     </aside>
 
-    <!-- Existing HTML content above remains unchanged -->
-
-<section class="menu-section" id="menu">
-    <div class="dish-box">
-      <img src="idli.jpeg" alt="idli">
-      <div class="dish-content">
-        <div class="dish-title">Idli</div>
-        <div class="dish-price">₹99</div>
-        <button class="add-button" onclick="addToCart('Idli', 99)">Add</button>
-
+    <section class="menu-section" id="menu">
+      <div class="dish-box">
+        <img src="idli.jpeg" alt="idli">
+        <div class="dish-content">
+          <div class="dish-title">Idli</div>
+          <div class="dish-price">₹99</div>
+          <button class="add-button" onclick="addToCart('Idli', 99)">Add</button>
+        </div>
       </div>
-    </div>
-  
-    <div class="dish-box">
-      <img src="masala dosa.jpeg" alt="masala dosa">
-      <div class="dish-content">
-        <div class="dish-title">Masala Dosa</div>
-        <div class="dish-price">₹99</div>
-        <button class="add-button" onclick="addToCart('Masala Dosa', 99)">Add</button>
-
+      <div class="dish-box">
+        <img src="masala dosa.jpeg" alt="masala dosa">
+        <div class="dish-content">
+          <div class="dish-title">Masala Dosa</div>
+          <div class="dish-price">₹99</div>
+          <button class="add-button" onclick="addToCart('Masala Dosa', 99)">Add</button>
+        </div>
       </div>
-    </div>
-  
-    <div class="dish-box">
-      <img src="puri.jpeg" alt="puri">
-      <div class="dish-content">
-        <div class="dish-title">Puri</div>
-        <div class="dish-price">₹95</div>
-        <button class="add-button" onclick="addToCart('Puri', 95)">Add</button>
-
+      <div class="dish-box">
+        <img src="puri.jpeg" alt="puri">
+        <div class="dish-content">
+          <div class="dish-title">Puri</div>
+          <div class="dish-price">₹95</div>
+          <button class="add-button" onclick="addToCart('Puri', 95)">Add</button>
+        </div>
       </div>
-    </div>
-  
-    <div class="dish-box">
-      <img src="Idiyappam.jpeg" alt="idiyappam">
-      <div class="dish-content">
-        <div class="dish-title">Idiyappam</div>
-        <div class="dish-price">₹95</div>
-        <button class="add-button" onclick="addToCart('Idiyappam', 95)">Add</button>
-
+      <div class="dish-box">
+        <img src="Idiyappam.jpeg" alt="idiyappam">
+        <div class="dish-content">
+          <div class="dish-title">Idiyappam</div>
+          <div class="dish-price">₹95</div>
+          <button class="add-button" onclick="addToCart('Idiyappam', 95)">Add</button>
+        </div>
       </div>
-    </div>
-  
-    <div class="dish-box">
-      <img src="puttu.jpeg" alt="puttu">
-      <div class="dish-content">
-        <div class="dish-title">Puttu</div>
-        <div class="dish-price">₹99</div>
-        <button class="add-button" onclick="addToCart('Puttu', 99)">Add</button>
-
+      <div class="dish-box">
+        <img src="puttu.jpeg" alt="puttu">
+        <div class="dish-content">
+          <div class="dish-title">Puttu</div>
+          <div class="dish-price">₹99</div>
+          <button class="add-button" onclick="addToCart('Puttu', 99)">Add</button>
+        </div>
       </div>
-    </div>
-  
-    <div class="dish-box">
-      <img src="vada.jpeg" alt="vada">
-      <div class="dish-content">
-        <div class="dish-title">Vada</div>
-        <div class="dish-price">₹55</div>
-        <button class="add-button" onclick="addToCart('Vada', 55)">Add</button>
-
+      <div class="dish-box">
+        <img src="vada.jpeg" alt="vada">
+        <div class="dish-content">
+          <div class="dish-title">Vada</div>
+          <div class="dish-price">₹55</div>
+          <button class="add-button" onclick="addToCart('Vada', 55)">Add</button>
+        </div>
       </div>
-    </div>
-  </section>
-  
-  <!-- Remaining HTML content below remains unchanged -->
-  
-
-      <!-- Add more dishes as needed -->
     </section>
   </div>
 
   <script>
-    const buttons = document.querySelectorAll('.add-button');
-
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        alert('Item added to cart!');
-      });
-    });
-    
-  function addToCart(dishName, price) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push({ name: dishName, price: price });
-    localStorage.setItem('cart', JSON.stringify(cart));
-    window.location.href = 'bill.html';
-  }
-
-
+    function addToCart(dishName, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ name: dishName, price: price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      window.location.href = 'bill.html';
+    }
   </script>
 </body>
 </html>
+
